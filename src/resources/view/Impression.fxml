@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane styleClass="main-container" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ImpressionController">
+    
+    <fx:define>
+        <Font fx:id="titleFont" size="18"/>
+        <Font fx:id="headerFont" size="14"/>
+    </fx:define>
+
+    <!-- Menu Latéral -->
+    <left>
+        <VBox minWidth="200" spacing="8" styleClass="sidebar">
+            <StackPane>
+                <ImageView fitHeight="40" fitWidth="40" preserveRatio="true">
+                    <image>
+                        <Image url="/images/logo.png" />
+                    </image>
+                    <clip>
+                        <Circle centerX="20" centerY="20" radius="20" />
+                    </clip>
+                </ImageView>
+                <Circle centerX="20" centerY="20" radius="20" fill="transparent" stroke="white" strokeWidth="2" />
+            </StackPane>
+            <Label styleClass="app-title" text="Gestion Carburant" />
+
+            <Button onAction="#versDashboard" prefWidth="200" styleClass="menu-button" text="📊 Dashboard" />
+
+            <Button onAction="#versVehicules" prefWidth="200" styleClass="menu-button" text="🚗 Véhicules" />
+
+            <Button onAction="#versCarburant" prefWidth="200" styleClass="menu-button" text="⛽ Ravitaillements" />
+
+            <Button onAction="#versRapports" prefWidth="200" styleClass="menu-button" text="📈 Rapports" />
+
+            <Button onAction="#versImpression" prefWidth="200" styleClass="menu-button" text="🖨️ Impression" />
+
+            <VBox VBox.vgrow="ALWAYS" />
+            <Button onAction="#exporterPDF" prefWidth="200" styleClass="menu-button" text="📄 Exporter PDF" />
+            <Button onAction="#deconnecter" prefWidth="200" styleClass="logout-button" text="🚪 Déconnexion" />
+        </VBox>
+    </left>
+
+    <!-- Contenu principal -->
+    <center>
+        <VBox spacing="20" VBox.vgrow="ALWAYS">
+            <!-- En-tête -->
+            <HBox alignment="CENTER" spacing="10">
+                <Label text="📄 IMPRESSION DES REÇUS ET RAPPORTS" font="$titleFont" styleClass="title-xl"/>
+            </HBox>
+    
+    <Separator/>
+    
+    <!-- Section de filtrage par date -->
+    <VBox spacing="10" styleClass="content-section">
+        <Label text="📅 FILTRAGE PAR PÉRIODE" font="$headerFont" styleClass="section-label"/>
+        
+        <HBox spacing="20" alignment="CENTER_LEFT">
+            <VBox spacing="5">
+                <Label text="Date de début:"/>
+                <DatePicker fx:id="dateDebutPicker" promptText="Sélectionner une date"/>
+            </VBox>
+            
+            <VBox spacing="5">
+                <Label text="Date de fin:"/>
+                <DatePicker fx:id="dateFinPicker" promptText="Sélectionner une date"/>
+            </VBox>
+        </HBox>
+        
+        <Label fx:id="labelStatistiques" text="Sélectionnez une période pour voir les statistiques" 
+               styleClass="info-label"/>
+    </VBox>
+    
+    <!-- Section de sélection du dossier de sauvegarde -->
+    <VBox spacing="10" styleClass="content-section">
+        <Label text="📁 DOSSIER DE SAUVEGARDE" font="$headerFont" styleClass="section-label"/>
+        
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <TextField fx:id="cheminFichierField" promptText="Chemin du dossier" prefWidth="400"/>
+            <Button fx:id="btnSelectionnerFichier" text="📂 Parcourir" onAction="#selectionnerDossier" styleClass="button"/>
+        </HBox>
+    </VBox>
+    
+    <!-- Tableau des ravitaillements -->
+    <VBox spacing="10">
+        <Label text="🚗 RAVITAILLEMENTS DISPONIBLES" font="$headerFont" styleClass="section-label"/>
+        
+        <TableView fx:id="tableRavitaillements" prefHeight="300" VBox.vgrow="ALWAYS">
+            <placeholder>
+                <Label text="Aucun ravitaillement trouvé pour la période sélectionnée" 
+                       styleClass="info-label"/>
+            </placeholder>
+        </TableView>
+    </VBox>
+    
+    <!-- Boutons d'action -->
+    <HBox spacing="30" alignment="CENTER">
+        <Button fx:id="btnImprimerRecu" text="🖨️ Imprimer Reçu PDF" 
+                onAction="#imprimerRecu" 
+                styleClass="action-button primary"
+                prefWidth="250" prefHeight="50"/>
+        
+        <Button fx:id="btnImprimerRapport" text="📊 Imprimer Rapport PDF" 
+                onAction="#imprimerRapport"
+                styleClass="action-button"
+                prefWidth="250" prefHeight="50"/>
+    </HBox>
+    
+    <!-- Informations d'aide -->
+    <VBox spacing="5" styleClass="warning-box">
+        <Label text="💡 INFORMATIONS:" font="$headerFont" styleClass="section-label"/>
+        <Label text="• Sélectionnez un ravitaillement dans le tableau pour imprimer son reçu détaillé" 
+               styleClass="info-label"/>
+        <Label text="• Utilisez les dates pour filtrer et générer un rapport de consommation" 
+               styleClass="info-label"/>
+        </VBox>
+        </VBox>
+    </center>
+</BorderPane>

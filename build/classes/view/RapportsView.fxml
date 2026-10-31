@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.PieChart?>
+
+
+<BorderPane styleClass="main-container" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RapportsController">
+
+    <!-- Menu Latéral -->
+    <left>
+        <VBox minWidth="200" spacing="8" styleClass="sidebar">
+            <StackPane>
+                <ImageView fitHeight="40" fitWidth="40" preserveRatio="true">
+                    <image>
+                        <Image url="/images/logo.png" />
+                    </image>
+                    <clip>
+                        <Circle centerX="20" centerY="20" radius="20" />
+                    </clip>
+                </ImageView>
+                <Circle centerX="20" centerY="20" radius="20" fill="transparent" stroke="white" strokeWidth="2" />
+            </StackPane>
+            <Label styleClass="app-title" text="Gestion Carburant" />
+
+            <Button onAction="#versDashboard" prefWidth="200" styleClass="menu-button" text="📊 Dashboard" />
+
+            <Button onAction="#versVehicules" prefWidth="200" styleClass="menu-button" text="🚗 Véhicules" />
+
+            <Button onAction="#versCarburant" prefWidth="200" styleClass="menu-button" text="⛽ Ravitaillements" />
+
+            <Button onAction="#versRapports" prefWidth="200" styleClass="menu-button" text="📈 Rapports" />
+
+            <Button onAction="#versImpression" prefWidth="200" styleClass="menu-button" text="🖨️ Impression" />
+
+            <VBox VBox.vgrow="ALWAYS" />
+            <Button onAction="#exporterPDF" prefWidth="200" styleClass="menu-button" text="📄 Exporter PDF" />
+            <Button onAction="#deconnecter" prefWidth="200" styleClass="logout-button" text="🚪 Déconnexion" />
+        </VBox>
+    </left>
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <Label prefHeight="30.0" prefWidth="262.0" styleClass="title-xl" text="Rapports &amp; Statistiques" />
+            <ChoiceBox fx:id="periodeChoiceBox" prefHeight="48.0" prefWidth="187.0" styleClass="choice-box" />
+            <Button onAction="#exporterPDF" styleClass="action-button primary" text="Exporter PDF" />
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="20" VBox.vgrow="ALWAYS">
+            <HBox spacing="20">
+                <VBox styleClass="card">
+                    <Label styleClass="section-label" text="Consommation Réelle par Véhicule" />
+                    <VBox fx:id="consoReelleChartContainer" prefHeight="300" prefWidth="500" />
+                </VBox>
+
+                <VBox styleClass="card">
+                    <Label styleClass="section-label" text="Répartition par Véhicule" />
+                    <VBox fx:id="repartitionChartContainer" prefHeight="300" prefWidth="400" />
+                </VBox>
+            </HBox>
+
+            <VBox styleClass="card">
+                <Label styleClass="section-label" text="Évolution des Coûts Mensuels" />
+                <VBox fx:id="coutsChartContainer" prefHeight="300" prefWidth="1000" />
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>

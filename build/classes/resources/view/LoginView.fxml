@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+
+
+<BorderPane styleClass="main-container" stylesheets="/styles/login3d.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+
+    <center>
+        <HBox alignment="CENTER" spacing="0">
+            <!-- Colonne gauche: formulaire -->
+            <VBox alignment="CENTER_LEFT" prefWidth="420" spacing="20" styleClass="left-panel">
+                <ImageView fx:id="logoImageView" fitHeight="80" fitWidth="80" preserveRatio="true" styleClass="logo-image">
+                    <image>
+                        <Image url="/images/logo.png" />
+                    </image>
+                    <clip>
+                        <Circle centerX="40" centerY="40" radius="40" />
+                    </clip>
+                </ImageView>
+                <Label styleClass="main-title" text="Connexion" />
+                <Label styleClass="subtitle" text="Veuillez remplir les champs pour vous connecter" />
+
+                <VBox prefWidth="320" spacing="10">
+                    <Label styleClass="field-label" text="Utilisateur" />
+                    <TextField fx:id="loginField" promptText="ex: admin" styleClass="text-field" />
+                </VBox>
+
+                <VBox prefWidth="320" spacing="10">
+                    <Label styleClass="field-label" text="Mot de passe" />
+                    <PasswordField fx:id="passwordField" promptText="••••••••" styleClass="password-field" />
+                </VBox>
+
+                <Button onAction="#handleLogin" styleClass="login-button" text="CONNEXION" />
+
+                <Label fx:id="errorMessage" styleClass="error-message" text="" />
+            </VBox>
+
+            <!-- Colonne droite: image complète sans cas gris -->
+            <StackPane prefWidth="420" styleClass="right-panel">
+                
+                <!-- Image de fond complète -->
+                <ImageView fx:id="loginImageView" fitWidth="420" fitHeight="600" preserveRatio="false" styleClass="background-image image-sharp" smooth="true" cache="true" style="-fx-background-radius: 12; -fx-padding: 20;" >
+                  <image>
+                       <Image url="/images/login.png" />
+                   </image>
+                </ImageView>
+                
+                <!-- Overlay avec texte de bienvenue -->
+                <VBox alignment="CENTER" spacing="12" style="-fx-background-color: transparant ; -fx-background-radius: 12; -fx-padding: 20;">
+                    <Label styleClass="welcome-text" text="Salut!" />
+                    <Label styleClass="welcome-subtitle" text="Connectez-vous pour accéder à notre application" />
+                </VBox>
+            </StackPane>
+        </HBox>
+    </center>
+
+    <padding>
+        <Insets bottom="40" left="40" right="40" top="40" />
+    </padding>
+
+</BorderPane>

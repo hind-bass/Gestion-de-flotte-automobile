@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Circle?>
+
+<VBox alignment="CENTER" spacing="40" style="-fx-background-color: linear-gradient(to bottom, #356267, #417377); -fx-padding: 60;" stylesheets="/styles/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+
+    <StackPane>
+        <ImageView fitHeight="180" fitWidth="180" preserveRatio="true" smooth="true" cache="true">
+            <image>
+                <Image url="/images/logo.png" />
+            </image>
+            <clip>
+                <Circle centerX="90" centerY="90" radius="90" />
+            </clip>
+        </ImageView>
+        <Circle centerX="90" centerY="90" radius="90" fill="transparent" stroke="white" strokeWidth="6" />
+        <Circle centerX="90" centerY="90" radius="100" fill="transparent" stroke="rgba(255,255,255,0.3)" strokeWidth="2" />
+    </StackPane>
+
+    <Label style="-fx-font-size: 48px; -fx-font-weight: bold; -fx-text-fill: white; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 8, 0, 2, 2);" text="Gestion des Carburants" />
+    <Label style="-fx-font-size: 24px; -fx-text-fill: #b8d4d6; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 4, 0, 1, 1);" text="Système de Gestion Automatisé" />
+    <Label style="-fx-font-size: 20px; -fx-text-fill: #e0e0e0; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 4, 0, 1, 1);" text="Chargement en cours..." />
+
+</VBox>
+
+
